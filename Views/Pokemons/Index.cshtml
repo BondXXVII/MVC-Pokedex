@@ -1,0 +1,125 @@
+@model IEnumerable<PokedexV.Models.Pokemon>
+
+
+@{
+    ViewData["Title"] = "Pokedex";
+}
+
+<img class='back' src='@Url.Content("~/Images/bulbaJam.gif")'>
+<img class='back1' src='@Url.Content("~/Images/caterpieJam.gif")'>
+<img class='back2' src='@Url.Content("~/Images/squJam.gif")'>
+<img class='back3' src='@Url.Content("~/Images/charSpin2.gif")'>
+
+<img class='fire' id='fire' src='@Url.Content("~/Images/fireball.gif")'>
+
+<h1>Pokedex List</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="Pokemons" asp-action="Index" method="get">
+    <p>
+        Name: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Evolve)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @* @Html.DisplayFor(modelItem => item.Image) *@
+                <img src="@item.Image">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Evolve)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+<style>
+    .back {
+        z-index: -1;
+        position: fixed;
+        left: 3em; 
+        width: 8em;
+        transform: scaleX(-1);
+    }
+    .back1 {
+        z-index: -1;
+        position: fixed;
+        left: 12em;
+        width: 8em;
+    }
+    .back2 {
+        z-index: -1;
+        position: fixed;
+        width: 12em;
+        left: 0; 
+        margin-top: 7.5em;
+    }
+    .back3 {
+        z-index: -1;
+        position: fixed;
+        width: 8em;
+        margin-top: 7.5em;
+        left: 12em;
+    }
+    .fire {
+        visibility: hidden;
+        display: flex;
+        position: fixed;
+        left: 0; margin-top: 20em;
+        margin-left: -5em;
+    }
+</style>
+
+<script>
+    function thro() {
+        document.getElementById('fire').style.visibility = 'visible';
+        setTimeout(() => {begone();}, 4500);
+    }
+    function begone() {
+        document.getElementById('fire').style.visibility = 'hidden';
+        document.getElementById('fire').src = '@Url.Content("~/Images/fireball.gif")';
+    }
+</script>

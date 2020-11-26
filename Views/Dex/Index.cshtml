@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Pokedex Home";
+}
+
+<h2 class='title' ><strong>Welcome to the Pokedex of Pokedexeses...ses!!</strong></h2>
+
+@* <p>Hello from our View/Dex/Index and Dexcontroller</p> *@
+@{string x="https://wallpaperset.com/w/full/1/7/3/507476.jpg";}
+<img class='back' src=@x>
+<a href='/home/index/'><img class='dex' src='@Url.Content("~/Images/DexIcon.png")'></a>
+
+<style>
+
+    .back {
+        z-index: -1;
+        position: fixed;
+        display: flex;
+        background-repeat: no-repeat;
+        left: 0; top: 0;
+    }
+    .dex {
+        position: absolute;
+        margin-left: 25em;
+        margin-top: 8em;
+        width: 12em;
+    }
+    .dex:hover { transform: scale(1.8); }
+    .title {
+        position: absolute;
+        margin-left: 5em;
+    }
+</style>

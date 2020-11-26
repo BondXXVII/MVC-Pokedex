@@ -1,0 +1,135 @@
+﻿@* @{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>this the welcome screen change later, this is activated from home anchor in views/shared/_layout BY homecontroller TO views/home/index</p>
+</div> *@
+@{int x=0;}
+@model List<Pokemon>
+
+<form asp-controller="Home" asp-action="Index" method="get" class='input'>
+    <p>
+        @* <textarea id='input1' class='input1' rows=1 type="text" name="SearchString" onclick='document.getElementById("input1").innerHTML=""'>Search by name...</textarea> *@
+        <input type="text" name="SearchString" id='input1' class='input1' onclick='document.getElementById("input1").value=""' value='Search by name here...'>
+        <input class='inputB' type="submit" onclick='putItBack()' value="Filter" />
+    </p>
+</form>
+
+@* <img draggable='false' class='back1' src='@Url.Content("~/Images/pkwall.png")'> *@
+<img draggable='false' class='back' src='https://images4.alphacoders.com/934/934051.png'>
+<img draggable='false' class='boxL' src='https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2fb2821a-1406-4a1d-9b04-6668f278e944/d8anydd-7c081a1c-cc9b-4bac-a5d7-b5b4c7576d40.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMmZiMjgyMWEtMTQwNi00YTFkLTliMDQtNjY2OGYyNzhlOTQ0XC9kOGFueWRkLTdjMDgxYTFjLWNjOWItNGJhYy1hNWQ3LWI1YjRjNzU3NmQ0MC5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.4tH4lz5h9bNG_pI865E61rO3s1C9qydPmwGnx8q0l1o'>
+<img draggable='false' class='boxRNew' src='https://vignette1.wikia.nocookie.net/pokemongo/images/d/d1/Pokedex_Background.png/revision/latest?cb=20160720022003'>
+
+
+<img draggable='false' class='dex' src='@Url.Content("~/Images/PokedexV7.png")'> @* pokedex overlay *@
+ 
+<img src="@Model[x].Image" class="screenL">
+<div class='boxR'></div>
+<div class="screenR">
+    <h4 style="position: absolute; display: flex; text-align: left; margin-left: 1em">#: @Model[x].Id </h4>
+    <h4 style="text-align: center">@Model[x].Name </h4>
+    <h5 style="text-align: center">@Model[x].Type </h5>
+    <p class="text"><strong>@Model[x].Text </strong></p>
+    <p class="text"><strong>This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. This is nothing just a test. 
+    </strong></p>
+</div>
+
+<style>
+    .back1 {
+        z-index: -1;
+        position: fixed;
+        display: flex;
+        background-repeat: no-repeat;
+        right: 0; top: 0;
+        object-fit: contain;
+        width: 101em;
+    }
+    .dex {
+        display: flex;
+        position: fixed;
+        z-index: 3;
+        width: 69em;
+    }
+    .screenL {
+        width: 22em;
+        height: 20.3em;
+        position: fixed;
+        margin-top: 16em;
+        margin-left: 5.1em;
+        object-fit: contain;
+        @* border: solid green 2px; *@
+    }
+    .screenR {
+        position: fixed;
+        width: 22.2em;
+        height: 26.6em;
+        @* border: solid yellow 2px; *@
+        word-wrap: break-word;
+        overflow-y: scroll;
+        margin-left: 40.9em;
+        margin-top: 15em;
+        z-index: 5;
+        -ms-overflow-style: none; scrollbar-width: none;
+    }
+    .screenR::-webkit-scrollbar { display: none; }
+    .boxROld {
+        background-color: cyan;
+        position: fixed;
+        width: 23.5em;
+        height: 26.6em;
+        margin-left: 40.9em;
+        margin-top: 15em;
+    }
+    .text { margin-left: 1em; margin-right: 1em; }
+    .back {
+        z-index: -5;
+        position: fixed;
+        display: flex;
+        background-repeat: no-repeat;
+        object-fit: contain;
+        left: 0; margin-top: -3em;
+        width: 120em;
+    }
+    .boxL {
+        z-index: -1;
+        width: 28em;
+        position: fixed;
+        margin-left: 2em;
+        margin-top: 15.5em;
+    }
+    .boxRNew {
+        z-index: -1;
+        position: fixed;
+        width: 23.5em;
+        margin-left: 40.9em;
+        margin-top: 7em;
+    }
+    .input {
+        position: fixed;
+        margin-left: 6em;
+        margin-top: 38.2em;
+        z-index: 9;
+    }
+    .input1 {
+        background-color: transparent;
+        width: 17em;
+        position: fixed;
+        resize: none;
+        color: green;
+        border: none;
+    }
+    .inputB {
+        background-color: transparent;
+        position: fixed;
+        margin-left: 18.3em;
+        border: none;
+    }
+</style>
+<script>
+    function putItBack() {
+        document.getElementByID('input1').innerHTML = "Search by name here...";
+    }
+</script>

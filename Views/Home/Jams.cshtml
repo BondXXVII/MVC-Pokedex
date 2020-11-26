@@ -1,0 +1,27 @@
+<img class='fire' id='fire' src='@Url.Content("~/Images/fireball.gif")'>
+
+<img draggable='false' class='char2' src='@Url.Content("~/Images/charJam.gif")'>
+<img draggable='false' class='char2' src='@Url.Content("~/Images/caterpieJam.gif")'>
+<img draggable='false' class='char2' src='@Url.Content("~/Images/squJam.gif")'>
+<img draggable='false' class='char2' src='@Url.Content("~/Images/bulbaJam.gif")'>
+@* <img draggable='false' class='char2' src='@Url.Content("~/Images/charSpin2.gif")'> *@
+
+<style>
+    .fire {
+        visibility: hidden;
+        display: flex;
+        position: fixed;
+        right: 0; margin-top: 15em;
+        transform: scaleX(-1);
+        }
+</style>
+<script>
+    function thro() {
+        document.getElementById('fire').style.visibility = 'visible';
+        setTimeout(() => {begone();}, 4500);
+    }
+    function begone() {
+        document.getElementById('fire').style.visibility = 'hidden';
+        document.getElementById('fire').src = '@Url.Content("~/Images/fireball.gif")';
+    }
+</script>
